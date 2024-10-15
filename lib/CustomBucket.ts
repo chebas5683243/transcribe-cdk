@@ -7,6 +7,7 @@ interface CustomBucketProps {
 }
 
 export class CustomBucket extends Construct {
+  private namespace: string = "tcdk";
   public bucket: s3.Bucket;
 
   constructor(scope: Construct, public props: CustomBucketProps) {
@@ -17,7 +18,7 @@ export class CustomBucket extends Construct {
 
   private createBucket() {
     return new s3.Bucket(this, "Bucket", {
-      bucketName: `${this.props.id}Bucket`,
+      bucketName: `${this.namespace}-${this.props.id.toLowerCase()}-bucket`,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,

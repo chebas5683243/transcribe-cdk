@@ -4,4 +4,6 @@ import * as cdk from "aws-cdk-lib";
 import { TranscribeCdkStack } from "../lib/TranscribeCdkStack";
 
 const app = new cdk.App();
-new TranscribeCdkStack(app, "TranscribeCdkStack");
+new TranscribeCdkStack(app, "TranscribeCdkStack", {
+  stackName: "TranscribeCdkStack",
+});
